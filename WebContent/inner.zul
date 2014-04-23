@@ -1,0 +1,85 @@
+<zk>
+	<html>
+		<table border="1" bordercolordark="#0000FF"
+			backgroundcolor="white" bordercolorlight="#0000FF" cellpadding="10"
+			cellspacing="0">
+			<tbody>
+				<tr>
+					<td id="alignTable" align="LEFT" valign="CENTER">
+						<table border="0" cellpadding="0"
+							cellspacing="1">
+							<tbody>
+								<tr>
+									<td align="LEFT" valign="CENTER">
+										<img alt="" height="4"
+											src="./result_files/white.gif" width="50" />
+									</td>
+									<td align="LEFT" valign="CENTER">
+										<img alt="" height="40"
+											src="./result_files/score.gif" width="500" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table border="0" cellpadding="0"
+							cellspacing="1">
+							<tbody>
+								<tr>
+									<td align="LEFT" valign="CENTER">
+										<img alt="" height="10"
+											src="./image_file/query_no_scale.gif" width="550" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table border="0" width="500" cellpadding="0"
+							cellspacing="0"><!-- splits -->
+							<tbody>
+								<tr id="split">
+									<td align="LEFT" width="51"
+										valign="CENTER">
+										<img alt="" height="4"
+											src="./image_file/white.gif" width="51" />
+									</td>
+									<td align="LEFT" valign="CENTER">
+										<img alt="" height="10"
+											src="./image_file/scale.gif" width="2" />
+									</td>
+
+								</tr>
+
+							</tbody>
+						</table>
+
+						<table border="0" cellpadding="0"
+							cellspacing="0">
+							<tbody>
+								<tr id="splitNo" style="font-weight:normal">
+									<td align="LEFT" valign="CENTER">
+										<img alt="" height="4"
+											src="./result_files/white.gif" width="46" />
+									</td>
+									<td align="LEFT" valign="CENTER" style="font-weight:normal">
+										<label style="font-weight:normal">1</label>
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+		
+
+
+
+	</html>
+	<zscript>
+	System.out.println("inner");
+	
+	
+	</zscript>
+</zk>

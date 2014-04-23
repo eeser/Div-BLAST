@@ -1,0 +1,718 @@
+<?page title="Result Page" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Result Page" border="normal" id="win" onCreate='desktop.setBookmark("resultpage");'>
+
+		<html>
+			<div id="header">
+				<div id="site-name">
+
+					<img src="./image_file/helix.gif" />
+
+					Div-BLAST
+
+					<!-- 	<h1 class="desc">
+						Diversification of BLAST Results
+						</h1>
+					-->
+
+				</div>
+			</div>
+
+			<div align="center">
+				<span class="pgt"
+					style="text-align:center;font-weight:bold">
+					Diversification on Standard Protein BLAST
+				</span>
+			</div>
+			<link rel="stylesheet" type="text/css"
+				href="./css/main.css" media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/common.css" media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/blastn.css" media="screen" />
+			<link rel="stylesheet" id="sugstyle"
+				href="./css/ncbisuggest.css" type="text/css" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/jig.core.theme.min.css" />
+			<link type="text/css" rel="stylesheet"
+				href="./css/jquery.ui.ncbitoggler.min.css" />
+			<link type="text/css" rel="stylesheet"
+				href="./css/jquery.ui.ncbiautocomplete.min.css" />
+
+		</html>
+
+		<div>
+			<style id="main" src="./css/main.css"></style>
+			<style id="common" src="./css/common.css"></style>
+			<style dynamic="true">
+				.forgrid tr.z-listitem,tr.z-row td.z-row-inner,tr.z-row
+				td.z-group-inner,tr.z-row td.z-group-foot-inner,tr.z-row
+				{ background: #EEEEEE none repeat scroll 0 0; }
+
+				/* Unselected rows with the mouse hovering over them */
+
+				.forgrid tr.overd,td.overd,tr.z-listitem-over {
+				background: #D3DBFC none repeat scroll 0 0; }
+
+				/* Selected rows in a listbox */ .forgrid
+				tr.seld,td.seld,tr.z-listitem-seld { background: #eeeeee
+				none repeat scroll 0 0; }
+
+				/* Selected rows with the mouse hovering over them */
+				.forgrid tr.overseld,td.overseld,tr.z-listitem-over-seld
+				{ background: #D3DBFC none repeat scroll 0 0; }
+
+				.forgrid tr.z-row td.z-row-inner,tr.z-row
+				.z-cell,div.z-grid { border: none; overflow: hidden;
+				zoom: 1; background: #eeeeee; border-top: none;
+				border-left: none; border-right: none; border-bottom:
+				none; }
+
+			</style>
+			<style dynamic="true" src="./css/grid.css"></style>
+			<style dynamic="true">
+				.forgrid2 tr.z-listitem,tr.z-row td.z-row-inner,tr.z-row
+				td.z-group-inner,tr.z-row td.z-group-foot-inner,tr.z-row
+				{ background: #EEEEEE none repeat scroll 0 0; }
+
+				/* Unselected rows with the mouse hovering over them */
+				.forgrid2 tr.overd,td.overd,tr.z-listitem-over {
+				background: #D3DBFC none repeat scroll 0 0; }
+
+				/* Selected rows in a listbox */ .forgrid2
+				tr.seld,td.seld,tr.z-listitem-seld { background: #B8BFDC
+				none repeat scroll 0 0; }
+
+				/* Selected rows with the mouse hovering over them */
+				.forgrid2
+				tr.overseld,td.overseld,tr.z-listitem-over-seld {
+				background: #D3DBFC none repeat scroll 0 0; }
+
+				.forgrid2 tr.z-row td.z-row-inner,tr.z-row
+				.z-cell,div.z-grid { border: none; overflow: hidden;
+				zoom: 1; background: #d3dff5; border-top: none;
+				border-left: none; border-right: none; border-bottom:
+				none; }
+
+			</style>
+
+
+
+			<style id="grstyle">
+
+				.z-groupbox .z-caption { cursor: pointer;} .z-groupbox,<!-- bakk -->
+				.z-caption-readonly { cursor: default; }
+				.z-groupbox{background: #d3dff5}
+
+
+
+			</style>
+
+
+			<div id="head" align="center" style="background:#d3dff5"><!-- control -->
+				<html>
+					<div id="progDescr" align="center"
+						style="background:#d3dff5">
+
+
+						Div-BLAST program queries proteins on BLAST
+						databases, and diversifies the results.
+
+					</div><!-- head -->
+				</html>
+			</div><!-- head -->
+			<grid zclass="forgrid2">
+
+				<rows>
+
+					<row>
+						<label id="dsc"
+							style="color:#2a6979;font-family:Arial;font-size:15px; font-weight: bold;">
+							Protein Sequence
+						</label>
+					</row>
+				</rows>
+			</grid>
+
+
+			<grid zclass="forgrid2">
+				<rows>
+					<row>
+						<grid>
+							<rows>
+								<row>
+									<cell width="110px">
+										<label
+											style="font-weight: bold;color:#333333">
+											Query ID:
+										</label>
+									</cell>
+									<label id="queryid"
+										style="color:#333333">
+										Query ID
+									</label>
+								</row>
+								<row>
+									
+								</row>
+
+								<row>
+									<label
+										style="font-weight: bold;color:#333333">
+										Query Length:
+									</label>
+									<label id="qlength"
+										style="color:#333333">
+										Query Length
+									</label>
+								</row>
+								<row>
+									<label
+										style="font-weight: bold;color:#333333">
+										Diversity Algorithm:
+									</label>
+									<label id="divalgo"
+										style="color:#333333">
+										Diversity Algorithm
+									</label>
+								</row>
+								<row>
+									<label
+										style="font-weight: bold;color:#333333">
+										Description:
+									</label>
+									<label id="divdesc"
+										style="color:#333333">
+										Description
+									</label>
+								</row>
+								<row>
+									<label
+										style="font-weight: bold;color:#333333">
+										Diversity Percentage:
+									</label>
+									<slider id="slider"
+										onScroll="scrollAct()">
+
+									</slider>
+								</row>
+							</rows>
+						</grid>
+
+						<grid>
+							<rows>
+								<row>
+									<cell width="100px">
+										<label
+											style="font-weight: bold;color:#333333">
+											Molecule Type:
+										</label>
+									</cell>
+									<label style="color:#333333">
+										amino acid
+									</label>
+								</row>
+								<row>
+
+									<label
+										style="font-weight: bold;color:#333333">
+										Database Name:
+									</label>
+
+									<label id="dbname"
+										style="color:#333333">
+										db
+									</label>
+								</row>
+								<row>
+									<label
+										style="font-weight: bold;color:#333333">
+										Description:
+									</label>
+									<label id="dbdesc"
+										style="color:#333333">
+										Description
+									</label>
+								</row>
+								<row>
+									<label
+										style="font-weight: bold;color:#333333">
+										Program:
+									</label>
+									<label id="program"
+										style="color:#333333">
+										Program
+									</label>
+								</row>
+
+							</rows>
+						</grid>
+					</row>
+				</rows>
+			</grid>
+
+			<div>
+				<html>
+					<script language="JavaScript" type="text/javascript"
+						src="./js/setAlignment.js">
+
+
+					</script>
+					<script language="JavaScript" src="./js/setSplit.js"
+						type="text/javascript">
+
+
+					</script>
+					<script language="JavaScript"
+						src="./js/tablerefresh.js" type="text/javascript">
+
+
+					</script>
+					<script language="JavaScript">
+						window.onerror=ignoreerror();
+
+					</script>
+
+
+				</html>
+				<groupbox id="graphSum" closable="true">
+					<caption>
+						<label value="Graph Summary"
+							style="color:#336699;background-color:#dddddd;font-size:15px">
+						</label>
+					</caption>
+					<div align="center">
+
+						<box id="mainbox" style="background-color:white"
+							align="center">
+
+						</box>
+
+					</div>
+				</groupbox>
+
+			</div>
+			<div>
+				<groupbox id="descSum" closable="true">
+					<caption>
+						<label value="Descriptions"
+							style="color:#336699;background-color:#dddddd;font-size:15px">
+						</label>
+					</caption>
+					<zscript>
+						import JavaFiles.MyItemComparator;
+						import java.lang.*;
+						//comparators for each attribute
+						slider.setCurpos((int) ((Double) session.getAttribute("divrate") * 100));
+						Comparator asc1 = new MyItemComparator(true, 1, 0);
+						Comparator dsc1 = new MyItemComparator(false, 1, 0);
+						Comparator asc3 = new MyItemComparator(true, 3, 0);
+						Comparator dsc3 = new MyItemComparator(false, 3, 0);
+						Comparator asc4 = new MyItemComparator(true, 4, 1);
+						Comparator dsc4 = new MyItemComparator(false, 4, 1);
+						Comparator asc5 = new MyItemComparator(true, 5, 1);
+						Comparator dsc5 = new MyItemComparator(false, 5, 1);
+						Comparator asc6 = new MyItemComparator(true, 6, 1);
+						Comparator dsc6 = new MyItemComparator(false, 6, 1);
+					</zscript>
+					<listbox id="listbox" fixedLayout="true">
+						<listhead>
+							<listheader align="center">
+								<hbox>
+									<a onClick="download()"
+										tooltiptext="Download the selected sequences with general information">
+										Download
+									</a>
+									<checkbox id="alldownload">
+
+										<attribute name="onCheck"><![CDATA[]]>
+											boolean cvalue = self.isChecked();
+											List l = listbox.getItems();
+											Listitem tmp;
+											for (Object o : l) {
+												tmp = (Listitem) o;
+												((Checkbox) tmp.getFirstChild().getFirstChild()).setChecked(cvalue);
+											}
+										</attribute>
+									</checkbox>
+
+								</hbox>
+							</listheader>
+
+							<listheader align="center" sort="auto"
+								sortAscending="${asc1 }" sortDescending="${dsc1 }">
+
+								Order
+
+								<image align="right"
+									src="image_file/sort.gif">
+								</image>
+
+							</listheader>
+							<listheader width="40%">
+								Description
+							</listheader>
+							<listheader align="center" sort="auto"
+								sortAscending="${asc3 }" sortDescending="${dsc3 }">
+								Score
+								<image align="right"
+									src="image_file/sort.gif">
+								</image>
+							</listheader>
+							<listheader align="center" sort="auto"
+								sortAscending="${asc4 }" sortDescending="${dsc4 }">
+								Coverage
+								<image align="right"
+									src="image_file/sort.gif">
+								</image>
+							</listheader>
+							<listheader align="center" sort="auto"
+								sortAscending="${asc5 }" sortDescending="${dsc5 }">
+								E-value
+								<image align="right"
+									src="image_file/sort.gif">
+								</image>
+							</listheader>
+							<listheader align="center" sort="auto"
+								sortAscending="${asc6 }" sortDescending="${dsc6 }">
+								Identities
+								<image align="right"
+									src="image_file/sort.gif">
+								</image>
+							</listheader>
+						</listhead>
+
+
+					</listbox>
+
+				</groupbox>
+
+			</div>
+			
+			<div id="detailBox">
+
+				<groupbox>
+					<caption>
+						<label
+							style="color:#336699;background-color:#dddddd;font-size:15px">
+							Sequence Detail
+						</label>
+					</caption>
+
+					<grid>
+						<rows>
+							<row>
+								<div align="center">
+									<box width="99%"
+										style="background-color:white;border-color:black;border:1px">
+										<html>
+
+											<label id="seqDetail"
+												style="font-weight:normal;font-family : courier new;"
+												visible="true">
+											</label>
+										</html>
+									</box>
+								</div>
+							</row>
+						</rows>
+					</grid>
+
+				</groupbox>
+
+			</div>
+
+		</div>
+
+		<zscript><![CDATA[
+			import java.util.*;
+			import diversity.*;
+			import jaligner.*;
+			import java.io.*;
+			//inner.setSrc("inner.zul");
+			FileParser fparser = (FileParser) session.getAttribute("fparser");
+			program.setValue(fparser.getProgram());
+			queryid.setValue(((String) session.getAttribute("out"))
+					.substring(((String) session.getAttribute("out")).lastIndexOf('/') + 1));
+			if (((String) session.getAttribute("divtype")).equals("bit")) {
+				divalgo.setValue("Bitwise Comparison");
+				divdesc.setValue("It just considers the aligned and non-aligned parts regardless of considering mutations in alignments. This approach is based on pairwise comparison of sequences.");
+			} else if (((String) session.getAttribute("divtype")).equals("ent")) {
+				divalgo.setValue("Entropy Based");
+				divdesc.setValue("It considers aligned sections with considering the mutations in the alignments.");
+			} else {
+				divalgo.setValue("None");
+				divdesc.setValue("It returns the exact results of BLAST");
+			}
+			List seqlist = (List) session.getAttribute("list");
+			Sequence query = (Sequence) session.getAttribute("seq");
+			qlength.setValue(query.getLength() + "");
+			String dbn = (String) session.getAttribute("dbname");
+			dbname.setValue(dbn);
+			double length = query.length();
+			double rate = 500.0 / length;
+			//System.out.println(rate + " rate length" + length);
+			Sequence seq;
+			String inputJS;
+			String seqStr;
+			int cursor;
+			boolean empty;
+			int width;
+			double score;
+			int counter = 1;
+			jaligner.matrix.Matrix matrix = jaligner.matrix.MatrixLoader
+					.load("BLOSUM62");
+			SmithWatermanGotoh sw = new SmithWatermanGotoh();
+		]]>
+		</zscript>
+
+		<zscript language="Java"><![CDATA[
+			if (dbn.equals("UniprotKB"))
+				dbdesc.setValue("a non redundant database with UniProtKB/Swiss-Prot (reviewed, manually annotated)  and UniProtKB/TrEMBL (unreviewed, automatically annotated) sequences");
+			else if (dbn.equals("UniproKB/SwissProt"))
+				dbdesc.setValue("Non-redundant UniProtKB/SwissProt sequences.");
+			else if (dbn.equals("nr"))
+				dbdesc.setValue("All non-redundant GenBank CDS translations+PDB+SwissProt+PIR+PRF excluding environmental samples from WGS projects");
+			else if (dbn.equals("UniRef100"))
+				dbdesc.setValue("A comprehensive and non-redundant UniProt reference clusters with identical sequences");
+			else if (dbn.equals("UniRef90"))
+				dbdesc.setValue("A comprehensive and non-redundant UniProt reference clusters on identical sequences at 90% sequence identity levels");
+			else if (dbn.equals("UniRef50"))
+				dbdesc.setValue("A comprehensive and non-redundant UniProt reference clusters with identical sequences at 50% sequence identity levels");
+
+			Include inner = new Include("inner.zul");//for alignment section
+			public void alignment(List seqlist) {
+				try {
+					counter++;
+					mainbox.removeChild(inner);
+					inner = new Include("inner.zul");
+					mainbox.appendChild(inner);
+					ListModel model = new ListModelList(seqlist);//rendering sequences
+					listbox.setModel(model);
+
+					listbox.setItemRenderer(new JavaFiles.ListBoxRendererForDesc());
+					
+					//calculation of the intervals
+					int div5, div6, last, chosen;
+					div5 = (int) (length / 5);
+					div6 = (int) (length / 6);
+					if (div5 <= 4)
+						chosen = 6;
+					else {//secim icin bu else chosen belrlenecek
+						if (div5 < 35) {
+							div5 -= div5 % 5;//suan tam ksımlar
+							div6 -= div6 % 5;
+						} else {
+							div5 -= div5 % 10;//suan tam ksımlar
+							div6 -= div6 % 10;
+						}
+						if (length - div5 * 5 <= length - div6 * 6)
+							chosen = 5;
+						else if (div6 == 0)
+							chosen = 1;
+						else
+							chosen = 6;
+		
+					}
+		
+					if (chosen != 1) {
+						last = (chosen == 5) ? div5 : div6;
+						double nlength = 500 - rate * (length - last * chosen);//new real length;
+						//required js code for arranging the intervals
+						inputJS = "'" + (int) (nlength / chosen) + "','" + chosen
+								+ "','" + last * chosen + "'";//real interval, interval number, the length will be split for seq
+						System.out.println(inputJS + " split");
+						Clients.evalJavaScript("setSplit(" + inputJS + ")");
+		
+					}
+		
+					//arranging sequence summary lines with images (js code)
+					int counter = 1;
+					for (Object s : seqlist) {
+						inputJS = "'0'";
+						cursor = 0;
+						seq = (Sequence) s;
+						seqStr = seq.getSequence();
+		
+						if (seqStr.charAt(0) == '#')
+							empty = true;
+						else
+							empty = false;
+						for (int i = 0; i < seqStr.length(); i++) {
+		
+							if (empty
+									&& (seqStr.charAt(i) != '#' || i == seqStr.length() - 1)) {
+								
+								width = (int) ((i - cursor) * rate);
+								cursor = i;
+								empty = false;
+								inputJS += ",'white','" + width + "'";
+							} else if ((!empty)
+									&& (seqStr.charAt(i) == '#' || i == (seqStr
+											.length() - 1))) {
+								score = sw.align(
+										new Sequence(seq.subsequence(cursor, i - cursor
+												- 1)),
+										new Sequence(query.subsequence(cursor, i
+												- cursor - 1)), matrix, 8, 4)
+										.getScore();
+								if (score < 40)
+									inputJS += ",'black','";
+								else if (score >= 40 && score < 50)
+									inputJS += ",'blue','";
+								else if (score >= 50 && score < 80)
+									inputJS += ",'green','";
+								else if (score >= 80 && score < 200)
+									inputJS += ",'purple','";
+								else
+									inputJS += ",'red','";
+								width = (int) ((i - cursor) * rate);
+								cursor = i;
+								empty = true;
+								inputJS += width + "'";
+							} else if (empty && seqStr.charAt(i) == '#') {
+								continue;
+							}
+		
+							else if (!(empty || seqStr.charAt(i) == '#')) {
+								continue;
+							}
+		
+						}
+		
+						inputJS += ",'" + seq.getDescription() + "','"
+								+ seq.getTostr().replaceAll("\n", "#") + "'";
+		
+						System.out.println(inputJS);
+		
+						Clients.evalJavaScript("setAlignment(" + inputJS + ")");
+
+						//first twnty will be shown
+						if (counter++ > 20)
+							break;
+		
+					}
+				} catch (Exception e) {
+					System.out.println("geldi");
+				}
+			}
+			public void scrollAct() {
+		
+				//change diversity
+				String ty = (String) session.getAttribute("divtype");
+				double rate1 = slider.getCurpos() / 100.0;
+				FileParser fp;
+				if (ty.equals("none")) {
+					return;
+				} else if (ty.equals("bit")) {
+					fp = new FileParser((String) session.getAttribute("out"));
+					Diversity div = new Diversity(fp.getDb(), fp.getQuery(),
+							seqlist.size(), 1 - rate1, rate1);
+					List l = div.findTopKDiverseSet();
+					session.setAttribute("divrate", slider.getCurpos() / 100.0);
+					System.out.println("bit bitti");
+		
+					alignment(l);
+		
+				} else {
+					fp = new FileParser((String) session.getAttribute("out"));
+					Diversity_entropybased div = new Diversity_entropybased(fp.getDb(),
+							fp.getQuery(), seqlist.size(), 1 - rate1, rate1);
+					List l = div.findTopKDiverseSet();
+					session.setAttribute("divrate", slider.getCurpos() / 100.0);
+					System.out.println("ent bitti");
+		
+					alignment(l);
+				}
+			}
+			
+			//downloaded file preparation
+			public void download() {
+		
+				List list = listbox.getItems();
+				int size = list.size();
+				String outtext = "";
+		
+				outtext += "****Query Information****\n" + "Query ID: "
+						+ queryid.getValue() + "\nQuery Length: " + qlength.getValue()
+						+ "\nMolecule Type: Amino Acid"
+		
+						+ "\n****Program Information****\n" + "Database: "
+						+ dbname.getValue() + "\nDescription: " + dbdesc.getValue()
+						+ "\nProgram: " + program.getValue()
+						+ "\nDiversity Algorithm: " + divalgo.getValue()
+						+ "\nDescription: " + divdesc.getValue();
+				boolean checked = false;
+				Listitem temp;
+				for (int i = 0; i < size; i++) {
+					temp = (Listitem) list.get(i);
+					if (((Checkbox) temp.getFirstChild().getFirstChild()).isChecked()) {
+						checked = true;
+						outtext += "\n\n" + ((Sequence) temp.getValue()).getTostr();
+					}
+		
+				}
+		
+				if (!checked) {
+					Messagebox
+							.show("Please, check the sequences that you want to download");
+					return;
+				}
+		
+				writeOuttext(outtext);
+				FileInputStream fi = new FileInputStream(new File(
+						((String) session.getAttribute("out")) + ".download.txt"));
+				org.zkoss.zul.Filedownload.save(
+						fi,
+						"application/notepad",
+						((String) session.getAttribute("out"))
+								.substring(((String) session.getAttribute("out"))
+										.lastIndexOf('/') + 1)
+								+ ".txt");
+		
+			}
+			public void writeOuttext(String text) {
+		
+				DataOutputStream writer = new DataOutputStream(
+						new BufferedOutputStream(new FileOutputStream(new File(
+								((String) session.getAttribute("out"))
+										+ ".download.txt"))));
+				writer.write(text.getBytes());
+				writer.flush();
+				writer.close();
+		
+			}
+			public void fulldownload() {
+		
+				List list = listbox.getItems();
+				int size = list.size();
+				Messagebox.show(size + "");
+				String outtext = "";
+		
+				outtext += "****Query Information****\n" + "Query ID: "
+						+ queryid.getValue() + "\nQuery Length: " + qlength.getValue()
+						+ "\nMolecule Type: Amino Acid"
+		
+						+ "\n****Program Information****\n" + "Database: "
+						+ dbname.getValue() + "\nDescription: " + dbdesc.getValue()
+						+ "\nProgram: " + program.getValue()
+						+ "\nDiversity Algorithm: " + divalgo.getValue()
+						+ "\nDescription: " + divdesc.getValue();
+				Listitem temp;
+				for (int i = 0; i < size; i++) {
+					temp = (Listitem) list.get(i);
+		
+					outtext += "\n\n" + ((Sequence) temp.getValue()).getTostr();
+		
+				}
+		
+				writeOuttext(outtext);
+				org.zkoss.zul.Filedownload.save("/db.txt", null);
+			}
+			alignment(seqlist);
+			System.out.println(counter + " kalamam");
+		  
+		]]>
+		</zscript>
+	</window>
+</zk>

@@ -1,0 +1,238 @@
+<?page title="Diverse-BLAST Wait Screen" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="win"
+		title="Wait Screen: After completing all processes, it will automatically redirect the result page"
+		border="normal" apply="JavaFiles.ResultComposer"
+		onCreate='desktop.setBookmark("waitpage");'>
+		<zscript>
+			int count = 1;
+		</zscript>
+		<style id="grstyle">
+
+			.z-groupbox .z-caption { cursor: pointer;} .z-groupbox,<!-- bakk -->
+			.z-caption-readonly { cursor: default; }
+			.z-groupbox{background: #d3dff5}
+
+		</style>
+
+		<style id="forgrid">
+			tr.z-listitem,tr.z-row td.z-row-inner,tr.z-row
+			td.z-group-inner,tr.z-row td.z-group-foot-inner,tr.z-row {
+			background: #EEEEEE none repeat scroll 0 0; }
+
+
+
+			/* Unselected rows with the mouse hovering over them */
+			tr.overd,td.overd,tr.z-listitem-over { background: #D3DBFC
+			none repeat scroll 0 0; }
+
+			/* Selected rows in a listbox */
+			tr.seld,td.seld,tr.z-listitem-seld { background: #B8BFDC
+			none repeat scroll 0 0; }
+
+			/* Selected rows with the mouse hovering over them */
+			tr.overseld,td.overseld,tr.z-listitem-over-seld {
+			background: #D3DBFC none repeat scroll 0 0; } tr.z-row
+			td.z-row-inner, tr.z-row .z-cell,div.z-grid { border: none;
+			overflow: hidden; zoom: 1; background: #eeeeee; border-top:
+			none; border-left: none; border-right: none; border-bottom:
+			none; }
+		</style>
+
+
+		<html>
+			<link rel="stylesheet" type="text/css" href="./css/main.css"
+				media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/common.css" media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/blastn.css" media="screen" />
+			<link rel="stylesheet" id="sugstyle"
+				href="./css/ncbisuggest.css" type="text/css" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/jig.core.theme.min.css" />
+			<link type="text/css" rel="stylesheet"
+				href="./css/jquery.ui.ncbitoggler.min.css" />
+			<link type="text/css" rel="stylesheet"
+				href="./css/jquery.ui.ncbiautocomplete.min.css" />
+			<div id="header">
+				<div id="site-name">
+
+					<img src="./image_file/helix.gif" />
+
+					Div-BLAST
+					
+				</div>
+			</div>
+
+			<div align="center">
+				<span class="pgt"
+					style="text-align:center;font-weight:bold">
+					Diversification on Standard Protein BLAST
+				</span>
+			</div>
+
+
+		</html>
+		<div>
+
+
+
+			<html>
+				<div id="progDescr" align="center"
+					style="background:#d3dff5">
+
+					Div-BLAST program queries proteins on BLAST
+					databases, and diversifies the results.
+
+				</div><!-- head -->
+			</html>
+			<groupbox style="grstyle">
+				<label id="dsc"
+					style="color:#2a6979;font-family:Arial;font-size:15px; font-weight: bold;">
+					Job Title: Protein Sequence
+				</label>
+				<grid focus="false" style="forgrid">
+					<rows>
+						<row>
+
+							<label style="font-weight: bold;">
+								Request ID
+							</label>
+
+							<hbox>
+								<label id="request"></label>
+								<image src="image_file/question.png"
+									popup="reqidInfo" style="cursor: help">
+								</image>
+							</hbox>
+						</row>
+						<row>
+
+							<label style="font-weight: bold;">
+								Status
+							</label>
+
+							<hbox>
+								<label id="status">
+									Searching sequences on BLAST
+								</label>
+								<image src="image_file/question.png"
+									popup="statusInfo" style="cursor: help">
+								</image>
+							</hbox>
+						</row>
+						<row>
+							<label style="font-weight: bold;">
+								Submitted at
+							</label>
+							<label id="submittime">submission</label>
+						</row>
+						<row>
+							<label style="font-weight: bold;">
+								Current time
+							</label>
+							<label id="currenttime">submission</label>
+						</row>
+						<row>
+
+							<label style="font-weight: bold;">
+								Time Since Submission
+							</label>
+
+							<hbox>
+								<label id="current">1</label>
+								<image src="image_file/question.png"
+									popup="submissionInfo" style="cursor: help">
+								</image>
+							</hbox>
+						</row>
+
+					</rows>
+
+				</grid>
+			</groupbox>
+
+
+
+
+		</div>
+		<timer id="timer" delay="1000" repeats="true">
+			<attribute name="onTimer">
+				currenttime.setValue(new Date().toString());
+			
+				done = (Boolean) session.getAttribute("done");
+				divsta = (Boolean) session.getAttribute("divstatus");
+				boolean err = false;
+				System.out.println(done);
+				if (divsta) {
+					status.setValue("Diversifying over BLAST results");
+				}
+				if (session.getAttribute("exception") != null) {
+					System.out.println("girdi");
+					timer.stop();
+					Executions.getCurrent().sendRedirect("error.zul", "_self");
+					return;
+				}
+				if (done) {
+					timer.stop();
+					//TODO exeyi sonlandırmak lazım.
+					done = new Boolean(false);//bunu hepsi icin farklı yapmamız lazım, yoksa threadler birbirini baltalayabilir.
+					Executions.getCurrent().sendRedirect("result.zul", "_self");
+					return;
+				}
+				current.value = "" + ++count;
+			</attribute>
+		</timer>
+		<zscript><![CDATA[
+			Boolean done = new Boolean(false);
+			Boolean divsta = new Boolean(false);
+			//boolean done=false;
+			submittime.setValue(new Date().toString());
+			currenttime.setValue(new Date().toString());
+			java.util.concurrent.Executor exe = java.util.concurrent.Executors
+					.newFixedThreadPool(100);
+			JavaFiles.ResultComposer.exe = exe;
+		]]></zscript>
+
+		<zscript><![CDATA[
+			import org.zkoss.zk.ui.event.EventListener;
+			class EventList implements EventListener {
+				public void onEvent(Event event) throws UiException {
+				}
+			}
+			page.addEventListener("onBookmarkChange", new EventList());
+		]]>
+		</zscript>
+		<popup id="reqidInfo" width="300px">
+			<html>
+				<![CDATA[Enter a 10 length alphanumeric string given as
+				Request ID in your past sessions. Server flushes the
+				queries waiting longer than 3 days. When the property
+				used, it will redirect the exact result page with the
+				given request ID.]]>
+				
+			</html>
+		</popup>
+
+		<popup id="statusInfo" width="300px">
+			<html>
+
+				<![CDATA[It has two different alternatives: "Searching
+				sequences on BLAST" and "Diversifying over BLAST
+				results". After BLAST side is completed, the status is
+				changed and diversification part will be initialized.]]>
+				
+			</html>
+		</popup>
+		<popup id="submissionInfo" width="300px">
+			<html>
+
+				<![CDATA[It shows the elapsed time after submission in
+				seconds.]]>
+				
+			</html>
+		</popup>
+
+	</window>
+</zk>

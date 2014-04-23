@@ -1,0 +1,6 @@
+<window width="80%" title="Session Timeout" border="normal" >
+	<vbox>
+		<label id="d"  >Your session is timeout, try again.</label>
+	</vbox>
+
+</window>

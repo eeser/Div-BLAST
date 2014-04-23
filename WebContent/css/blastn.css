@@ -1,0 +1,1110 @@
+form.f-wrap-1 {width:100%;padding: .5em 0;background: #eee url("images/corner.gif") no-repeat 100% 100%;white-space:normal;}
+form.f-wrap-1 fieldset {width:auto;margin: 0 1em; }
+form.f-wrap-1 h3 {margin:0 0 .6em;font: bold 125% arial;color:#369}
+/* hide from IE mac \*/
+form.f-wrap-1 label {float:none;}
+/* end hiding from IE5 mac */
+form.f-wrap-1 label input, form.f-wrap-1 label textarea, form.f-wrap-1 label select {width:15em;float:left;margin-left:10px}
+form.f-wrap-1 label b {float:left;width:8em;line-height: 1.7;display:block;position:relative}
+form.f-wrap-1 label b .req {color:#369;font-size:150%;font-weight:normal;position:absolute;top:-.1em;line-height:1;left:-.4em;width:.3em;height:.3em}
+form.f-wrap-1 div.req {color:#666;font-size:96%;font-weight:normal;position:absolute;top:.4em;right:.4em;left:auto;width:13em;text-align:right}
+form.f-wrap-1 div.req b {color:#369;font-size:140%}
+form.f-wrap-1 label select {width: 15.5em}
+form.f-wrap-1 label textarea.f-comments {width: 20em}
+form.f-wrap-1 div.f-submit-wrap {padding: 5px 0 5px 8em}
+form.f-wrap-1 input.f-submit {margin: 0 0 0 10px}
+form.f-wrap-1 fieldset.f-checkbox-wrap, form.f-wrap-1 fieldset.f-radio-wrap {float:left;width:32em;border:none;margin:0;padding-bottom:.7em}
+form.f-wrap-1 fieldset.f-checkbox-wrap b, form.f-wrap-1 fieldset.f-radio-wrap b {float:left;width:8em;line-height: 1.7;display:block;position:relative;padding-top:.3em}
+form.f-wrap-1 fieldset.f-checkbox-wrap fieldset, form.f-wrap-1 fieldset.f-radio-wrap fieldset {float:left;width:13em;margin: 3px 0 0 10px}
+form.f-wrap-1 fieldset.f-checkbox-wrap label, form.f-wrap-1 fieldset.f-radio-wrap label {float:left;width:13em;border:none;margin:0;padding:2px 0;margin-right:-3px}
+form.f-wrap-1 label input.f-checkbox, form.f-wrap-1 label input.f-radio {width:auto;float:none;margin:0;padding:0}
+form.f-wrap-1 label span.errormsg {position:absolute;top:0;right:-10em;left:auto;display:block;width:16em;}
+form.f-wrap-1 label span.errormsg b {padding: 10px 0;margin: 0 10px 0 30px;color:#B30800;font-weight:bold;display:block;width:auto;float:none;line-height:1.3}
+form.f-wrap-1 {min-width:850px;}
+.formdetail {   float: left; margin-left: 1em; width: 12em; position: relative;}
+.formdetail input {font-size: 90%;}
+.formdetail label { font-weight: bold; text-align: right; color: #666;}
+.formdetail label.subrg {
+padding-top: 0;
+margin-top: 0;
+text-align: center;
+color: #444;
+font-size: 100%;
+border-bottom:1px solid #CCCCCC;
+/*font-family:arial,verdana,sans-serif;*/
+letter-spacing:-1px;
+/*margin:1.2em 0 0.3em;*/
+padding-bottom:0.1em;
+}
+
+.helprange{
+width: 24em;
+margin-top:1.5em;
+margin-left:-12em;
+}
+
+.formblock, .formline {
+border: none;
+margin-bottom: 0.5em;
+}
+
+
+.qs { overflow: auto;}
+.qs div {
+float: left;
+clear: none;
+
+}
+
+.hint {
+font-size: 85%;
+color: #4E8999;
+}
+
+label {
+/*clear: left; padding: 0; margin: 0;*/
+font-weight: bold;
+}
+
+textarea {
+font-size: 100%;
+width: 40em;
+}
+
+#upl, .upl_help{
+/*float: left;*/
+}
+
+.clearlink
+{
+	margin-left: 9em;
+	_margin-left: 16em;
+	font-size: 80%;
+}
+
+input.savebutton, input.savebutton:focus {
+/* margin-left: 550px; */
+border:0;
+padding: 0;
+margin: 0;
+margin-top: 0.25em;
+/*padding: 4px 10px;*/
+background: transparent;
+color: #369;
+font-size: 100%;
+margin-left: 2em;
+text-decoration: underline;
+border-bottom: solid 1px #369;
+_border-bottom: none;
+}
+
+.savebutton 
+{
+	cursor: pointer; /* This is recognized by Mozilla as hand */	
+	cursor: hand; /* This is recognized by IE as hand */		
+}
+
+.inlineLabel{
+display: inline;
+position: relative; /* IE bug fix */
+}
+
+#breadcrumb.hidden
+{
+    display:none;
+}
+
+.hidden {
+display: none;
+}
+
+.shown {
+display: block;
+}
+
+div.formblock textarea {
+clear: left;
+float: left;
+width: 42em;
+_font-size:90%;
+_width: 44em;
+}
+
+#qtitle {
+        font-size: 90%;
+}
+
+.input input, label.cb {
+float: left;
+display: block;
+}
+
+
+label.cb,label.cbr {
+padding: 0;
+margin: 0;
+display: inline;
+white-space:nowrap;
+font-weight: normal;
+margin-right: .5em;
+}
+label.cbr 
+{
+margin-left: -0.5em;
+margin-right: .1em;
+}
+
+fieldset { border: solid 1px #ccc; padding: .5em .75em 1em 1em; margin: 0 1em 1em;}
+fieldset legend { font-size: 120%; padding:0 11px 3px 11px; margin: 0 .3em; color:#369;height:1.1em;_padding:0 11px}
+
+form.f-wrap-1 fieldset {
+   margin-bottom: 0.5em;
+   _margin-top: 1em;
+}
+
+form.f-wrap-1 fieldset fieldset {
+   background-color: #f2f2f2;
+        margin-bottom: 0;
+}
+
+form.f-wrap-1 fieldset label.m {
+margin: 0;
+padding: 0;
+width: 8.5em;
+display: block;
+float: left;
+clear: left;
+text-align: left;
+line-height: 1.2em;
+}
+
+
+form.f-wrap-1 fieldset div.input input,
+form.f-wrap-1 fieldset div.input label {
+   display: inline !important;
+   float: none;
+}
+
+.chkBox 
+{
+	margin-left:0.5em;
+}
+
+.section 
+{
+zoom: 1; /* IE hack to fix stupid layout bug */
+_padding-top: 1em;
+margin: 0;
+margin-bottom: -0.5em;
+}
+
+.section fieldset div.input 
+{
+margin-left: 9em;
+_margin-left: 0em;
+border-left: solid 1px #ccc;
+padding-left: 1em;
+margin-bottom: 1em;
+zoom: 1; /* IE hack to fix stupid layout bug */
+}
+
+#sopts fieldset div.input 
+{
+margin-left: 9em;
+border-left: solid 1px #ccc;
+padding-left: 1em;
+margin-bottom: 1em;
+}
+
+
+div.moreInput {
+margin: 0 1em;
+background-color: #ddeeff;
+text-align: left;
+zoom: 1;
+padding: 0.5em 0 0 0.5em;
+border: solid 1px #ccc;
+}
+
+
+div.moreInput input,
+div.moreInput p.help,
+.instr {
+    padding: 0;
+    margin: 0;
+    display: block;
+    clear:left;    
+ }
+
+.moreInput
+{
+display:none;
+}
+
+.moreInput.shown {
+display: block;
+}
+
+.moreInput.off {
+display: none;
+}
+
+/* This is necessary because of -- you guessed it -- IE */
+div.input table {
+border: none;
+margin-collapse: collapse;
+margin:0;
+padding: 0;
+}
+
+div.input table td {
+padding: 0;
+margin: 0;
+}
+
+div.input div
+{
+	_margin-left:2px;	
+}
+
+option {
+padding-right: 1em;
+}
+
+#moreopts {
+border: none;
+}
+
+#moreopts fieldset {
+   _margin-top: 2em;
+}
+
+#saveSearch
+{
+	margin-left:2em;
+}
+
+/* This hides all labels, input divs, and fieldsets */
+#sopts fieldset,
+#sopts label,
+#sopts div {
+display: none;
+}
+
+#sopts div.summary {
+display: block;
+}
+
+#sopts div.searchsummary {
+display: block;
+margin-left: 10em;
+padding-left: 1em;
+border-left: solid 1px #aaa;
+}
+
+/* This unhides the ones that match what's at the top of the file */
+#sopts *.all,
+div.blastn #sopts *.blastn,
+div.blastp #sopts *.blastp,
+div.blastx #sopts *.blastx,
+div.tblastn #sopts *.tblastn,
+div.tblastx #sopts *.tblastx,
+div.discoMegablast #sopts *.discoMegablast,
+div.megaBlast #sopts *.megaBlast,
+div.phiBlast #sopts *.phiBlast,
+div.psiBlast #sopts *.psiBlast,
+div.deltaBlast #sopts *.deltaBlast
+{
+display: block;
+}
+
+#sopts .hide{
+display: none;
+}
+
+#sopts *.shown 
+{
+	display:block;
+}
+
+	
+body.blastx #query *.blastx,
+body.tblastx #query *.tblastx,
+body.blastn #choosedb *.blastn,
+body.discoMegablast #choosedb *.discoMegablast,
+body.megaBlast #choosedb *.megaBlast
+{
+	display:block;
+}
+body.TraceArchive #choosedb #genomeDbs,
+body.TraceArchive #choosedb #entrezQuery,
+body.TraceArchive #orgInfo,
+body.TraceArchive #bl2,
+body.TraceArchive #excl,
+body.Microbial #choosedb #genomeDbs,
+body.Microbial #choosedb #entrezQuery,
+body.Microbial #bl2,
+body.GeoBlast #choosedb #genomeDbs,
+body.GeoBlast #choosedb #entrezQuery,
+body.GeoBlast #bl2,
+body.GeoBlast #excl,
+body.BioassayNucBlast #choosedb #genomeDbs,
+body.BioassayNucBlast #bl2,
+body.BioassayBlast #choosedb #genomeDbs,
+body.BioassayBlast #orgInfo,
+body.BioassayBlast #choosedb #entrezQuery,
+body.BioassayBlast #bl2,
+body.BioassayBlast #excl,
+body.TmsmartRsBlast #choosedb #genomeDbs,
+body.TmsmartRsBlast #choosedb #entrezQuery,
+body.TmsmartRsBlast #orgInfo,
+body.TmsmartRsBlast #bl2,
+body.Blast16S #choosedb #genomeDbs,
+body.Blast16S #orgInfo,
+body.Blast16S #choosedb #entrezQuery,
+body.Blast16S #bl2,
+body.SRA #choosedb #entrezQuery,
+body.SRA #orgInfo,
+body.SRA #bl2,
+body.SRA #excl,
+body.SNP #choosedb #entrezQuery,
+body.SNP #orgInfo,
+body.SNP #bl2,
+body.SNP #excl,
+body.MicrobialGenomes #bl2,
+body.MicrobialGenomes #excl
+{
+	display:none;
+}
+
+
+#gencode
+{
+	display:none;
+}
+#genomeDbs
+{
+    padding-bottom:0.2em;    
+	display:none;
+}
+
+#genomeDbs label,label.cbr
+{
+    
+    padding-left:4px;
+    _padding-left:2px;
+    padding-right:5px;    
+}
+
+div#savedLists{display:none;}
+
+/* TO DO: remove ss */
+input.ss 
+{
+	margin-top: 0.5em;
+	margin-left: 2em;
+}
+
+label.ss 
+{
+border: solid 1px #369;
+font-size: 90%;
+font-weight: normal;
+padding: 2px;
+}
+
+
+
+label.prompt {
+display: inline;
+background-color:#ddd;
+margin-top:5px;
+padding-bottom: 13px;
+padding-right:5px;
+padding-left:5px;
+font-size: 110%;
+font-weight: bold;	
+}
+
+#message
+{
+}
+#oatLabel
+{
+	font-style:italic;
+}
+
+#algPar
+{
+	margin-left:1em;	
+	font-weight:bold;
+}
+
+.infoTitle 
+{
+  color: black;	
+}
+
+
+.dbInfo, .progInfo, .progDescr 
+{
+    font-weight: bold;
+    color: #369;
+}
+
+/* FIXME: Merge these changes above where they belong */
+
+#searchForm {
+background-color: #d3dff5;
+border: solid 1px #888;
+padding-top: .5em;
+_padding-top: 1em;
+}
+
+fieldset {
+padding: 0.5em 1em 0.5em;
+background-color: #eee;
+margin: 0;
+_position: relative;
+_padding-top: 1em;
+_margin-top: 0.5em;
+}
+
+fieldset legend {
+margin: 0;
+background-color: #ddd;
+border: solid 1px #ccc;
+_position: absolute;
+_left: 8px;
+_font-weight: bold;
+_font-size:100%;
+_top:1em;
+
+}
+
+div.qs, div.formblock {
+margin: 0;
+padding: 0;
+}
+
+p.help {
+margin-top: -0.5em;
+}
+
+
+.show
+{
+display: block;
+}
+
+
+
+div.psiBlast #sopts *.hide,div.phiBlast #sopts *.hide,div.deltaBlast #sopts *.hide
+{
+    display:none;
+}
+
+
+
+div.searchInfo
+{
+   zoom:1;	
+   background-color:white;
+   margin:0 1em 0.5em;
+   padding: 0.25em;
+   border: solid 1px #aaa;
+   font-size: 100%;
+   margin-top:1em;	        
+}
+#srchBottom 
+{
+  margin-bottom:1em;	   
+}
+
+div.searchInfo label {
+font-size: 80%;
+font-weight: bold;
+}
+
+div.searchInfo .summary {
+font-weight: bold;
+display: block;
+float: left;
+margin-left: 1em;
+_margin-left: 0.5em;
+margin-top:0.3em;
+}
+
+.openNewWin {
+margin-top: 0.5em;
+padding: 0;
+}
+
+#sopts div.openNewWin label {
+     display:inline;
+}
+
+div.qs 
+{
+    _width:750px;
+}
+
+#dblist
+{
+    _width:750px;
+}
+
+
+.diff
+{    
+    color:red;
+}
+
+.noDiff
+{
+    color: #eee;  
+}
+
+span#diffMes {
+background-color:#FFFACD;
+display:none;
+font-weight:bold;
+margin-left:12em;
+padding:1px 5px;
+right:2em;
+}
+
+select option.hidden 
+{
+    display:none;
+}
+
+.nonDefPar
+{
+    display:none;
+}
+
+div.nondef,span.nondef {
+background-color:#FFFACD;
+padding:3px 3px 3px 0;
+width:440pt;
+}
+
+div.input div.nondef
+{
+    padding-left:1em;
+    margin-left:-1em;
+}
+
+div.nondef .nonDefPar,span.nondef .nonDefPar
+{
+    font-size:120%;
+    color:#989898;    
+    margin-left:-0.7em;
+    display:inline;
+}
+
+span.nondefMark
+{
+    font-size:120%;
+    color:#989898;    
+}
+
+body.SRA div.nondef.dbdata,
+body.TraceArchive div.nondef.dbdata
+{
+	width:420pt;
+}
+
+
+#chooseOther {
+
+zoom: 1;
+
+}
+
+#chooseOther  p.help
+{
+    margin: 0;
+    clear:left;    
+}
+
+#chooseOther {
+display:block;
+padding-top:0.5em;
+}
+
+
+#optSection {
+margin-bottom: 1em;
+}
+
+#pagelinks {
+margin-left:85%;
+margin-top:-1.6em;
+}
+
+#pagelinks a {
+font-size: 85%;
+margin-left: 1em;
+}
+
+#hq
+{
+    width:42em;
+}
+
+div.right {
+text-align: right;
+padding:0;
+margin: 0;
+padding-right: 1em;
+}
+
+input.right, a.right {
+display: block;
+float: right;
+margin: 0;
+padding: 0;
+margin-right: 3em;
+}
+
+input.right {
+background-color: transparent;
+padding: 0;
+text-decoration: underline;
+color: #369;
+border: none;
+}
+
+label.right {display: inline; font-weight: normal;}
+
+div.formblock label 
+{
+    padding:0;
+}
+
+#query div.input, 
+#choosedb div.input,
+#progSel div.input{
+margin-bottom: 0.3em;
+}
+#choosedb fieldset 
+{
+    margin-top:8pt;
+    margin-bottom:8pt;
+}
+
+/* bl2seq styles */
+
+
+div#subject
+{
+	display:none;
+}
+
+body.blast2seq div#subject,
+body.GlobalAln div#subject
+{
+	display:block;
+}
+
+body.blast2seq #choosedb,
+body.GlobalAln #choosedb
+{
+	display:none;
+}
+
+body.blast2seq #psiAll,
+body.blast2seq #phiAll,
+body.blast2seq #deltaAll{
+	display:none;
+}
+
+
+ul.msg 
+{
+    display:none;
+}
+
+ul.warning, ul.error, ul.info 
+{
+    display:block;
+} 
+
+/*styles for formatting options on the results page */
+fieldset.format div.input label
+{
+    font-weight:normal;
+}
+
+fieldset.format .resetAll
+{
+    display:none;
+}
+
+#bl2 span.cdsHelp
+{
+    display:none;
+}
+
+body.blast2seq.blastn #bl2 span.blastn,
+body.blast2seq.megaBlast #bl2 span.blastn,
+body.blast2seq.discoMegablast #bl2 span.blastn
+{
+    display:inline;
+}
+
+#query
+{
+    margin-top:-0.8em;
+}
+
+#progDescr
+{
+    text-align:center;
+    font-weight:bold;
+    font-size:85%;
+    color:#585858;
+}
+
+
+/* programs tabs styles */
+div.bc {
+padding-right:2px;
+width:100%;
+}
+ul.bc {
+background:transparent url(images/bar3.png) repeat-x scroll 0% 50%;
+border-bottom:1px solid #7B93A9;
+border-top:1px solid #B0D2F2;
+cursor:default;
+display:table;
+font-family:Arial;
+font-size:12px;
+height:15px;
+height:18px; 
+list-style-type:none;
+margin:-3px 0pt 8px;
+padding:0pt;
+width:100%;
+}
+ul.bc li {
+display:inline;
+margin:0pt;
+padding:0pt 8px 1px;
+text-align:center;
+background:transparent;
+}
+ul.bc li:first-child {
+border-left:1px solid #7B93A9;
+}
+ul.bc li.item-sep1 {
+background:transparent url(images/bar-sep1.png) no-repeat scroll 0%;
+border:medium none;
+height:13px;
+margin:0pt;
+padding:0pt 0pt 1px 7px;
+width:7px;
+}
+ul.bc li.item-sep2 {
+background:transparent url(images/bar-sep2.png) no-repeat scroll 0%;
+border:medium none;
+height:13px;
+margin:0pt;
+padding:0pt 0pt 1px 7px;
+width:7px;
+}
+ul.bc li.item-sep3 {
+background:transparent url(images/bar-sep3.png) no-repeat scroll 0%;
+border:medium none;
+height:13px;
+margin:0pt -3px 0pt 0pt;
+padding:0pt 0pt 1px 7px;
+width:7px;
+}
+ul li.bc-current {
+background:transparent url(images/bar1.png) repeat-x scroll 0% 50%;
+color:#191919;
+font-weight:bold;
+}
+
+li a {
+color:#333333;
+text-decoration:none;
+}
+li a:hover {
+text-decoration:underline;
+}
+
+
+li.ss {
+background:transparent url(images/bar3.png) repeat-x scroll 0%;
+border-left:1px solid #7B93A9;
+position:absolute;
+right:70px;
+width:128px;
+}
+
+li.rr {
+background:transparent url(images/bar3.png) repeat-x scroll 0%;
+border-left:1px solid #7B93A9;
+position:absolute;
+right:220px;
+width:128px;
+}
+
+
+li.help {
+background:transparent url(images/bar3.png) repeat-x scroll 0%;
+border-left:1px solid #7B93A9;
+border-right:1px solid #7B93A9;
+position:absolute;
+right:1px;
+width:64px;
+}
+
+
+div.bc-tabs	{
+	width:100.2%;
+	height:16px;
+	padding-top:5px;
+	background:transparent url(images/bar4.png) repeat-x;
+	margin:0;
+	margin-top:4px;
+}
+
+div.bc-tabs ul	{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	display:table;
+	font-family:Arial;
+	font-size:12px;
+	cursor:default;
+	background:transparent;
+}
+
+div.bc-tabs li	{
+	margin:0;
+	padding-left:4px;
+	padding-right:4px;
+	padding-top:7px;
+	padding-bottom:1px;
+	text-align:center;
+	display:inline;
+	position:relative;
+	top:1px;    
+}
+
+div.bc-tabs li:first-child	{
+	margin-left:10px;
+}
+
+div.bc-tabs li.tab-current	{
+	background:transparent url(images/bar5.png) repeat-x;
+	color:black;
+	/*margin-left:3px;		*/
+}
+
+div.bc-tabs li.tab-lh	{
+	background:transparent url(images/bar-sep5l.png) no-repeat;
+	padding-left:3px;
+	padding-right:3px;
+	margin-right:-3px;	
+	/*margin-left:-10px; (TO DO: get rid of template .dta settingaafter IE fix) */
+}
+
+div.bc-tabs li.tab-rh	{
+	background:transparent url(images/bar-sep5r.png) no-repeat;
+	padding-left:3px;
+	padding-right:3px;
+	margin-left:-3px;	
+}
+
+div.bc-tabs li.tab	{
+	background:transparent url(images/bar-sep5.png) no-repeat;
+	padding-left:3px;
+	padding-right:3px;
+}
+div.bc-tabs li.tab.hidden	{
+	display:none;
+}
+
+div.bc-tabs li a	{
+	color:#336699;
+	position:relative;
+	bottom:2px;
+	text-decoration:underline;
+	font-weight:bold;
+	font-size:95%;
+}
+
+div.bc-tabs li.tab-current a	{
+	color:black;
+	text-decoration:none;
+}
+
+#type-a #content { margin: 0 5px; }
+
+div.bc-tabs li.orgTitle
+{
+    text-align:center;
+    font-weight:bold;
+    margin-left:20em;
+    top:-3px;
+}
+
+div.bc-tabs li.specLinks 
+{
+    margin-left:3em;
+    font-size:90%;
+    font-weight:bold;
+}
+
+div.bc-tabs li.specLinks a
+{
+    bottom:1px;
+    font-size:100%;
+    margin-left:0.6em;
+}
+
+
+form.f-wrap-1 fieldset div.input input.orgIncl
+{
+    margin-left:10px;
+}
+
+#addOrg
+{
+    margin-left: 0.5em;    
+}
+
+
+.oExclR
+{
+    margin-left:3px;
+}
+
+.oExcl
+{
+    margin-left:6px;
+}
+
+.oExclRl
+{
+    margin-left:4px;
+}
+
+
+form.f-wrap-1 fieldset label.m.hidden 
+{
+    display: none;
+}
+
+#excl
+{
+    padding-bottom:0.8em;
+    padding-top:0.3em;
+}
+
+#ptl
+{
+    font-size:97%;
+    bottom:0;
+}
+label.help
+{
+    font-weight:normal;
+}
+
+#progHelp
+{
+    font-size:100%;
+}
+
+body.GlobalAln div.searchInfo .summary
+{
+    margin-top:-1px;
+}
+
+#breadcrumb #ann
+{
+    margin-right:5em;    
+    text-decoration:underline;
+    font-size:70%;
+    position:absolute;
+    margin-left:15%;
+}
+
+.pgt
+{
+    font-size:130%;
+    margin-right:3em;
+}
+
+
+/************JIG toggler options ******/
+#sopts *.ui-ncbitoggler-slave-open,#sopts div.ui-helper-reset
+{
+	display:block;	
+}
+
+
+a.ui-ncbitoggler.moreOptions,a.ui-ncbitoggler-open.moreOptions,
+a.ui-ncbitoggler.helplink,a.ui-ncbitoggler-open.helplink
+{
+color:#336699;
+display:inline-block;
+}
+
+.tgmo.ui-widget
+{
+    font-size:100%;
+}
+
+#moreopts.ui-widget
+{ 
+    margin-left:0;
+}
+/***jig options end ********************************************/
+
+#breadcrumb
+{
+    width:100%;
+    text-align:center;
+    display:block;
+    margin-top:auto;
+}
+
+#brd
+{
+    float:left;
+    padding-top:3px;
+    width:0;
+}
+.it
+{
+    font-style:italic;
+}
+
+label.dbInf
+{
+    font-weight:bold;
+    padding-right:0.5em;
+}
+#dbStatInfo {
+    color: gray;
+    font-size: 1.2em;
+    margin-left: 5em;
+    display:inline;
+}
+#microbDbs
+{
+    display:inline;
+}
+.mcrSB
+{
+    width:22em;
+}
+

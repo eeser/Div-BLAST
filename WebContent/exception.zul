@@ -1,0 +1,6 @@
+<?page title="Exception!" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Exception!" border="normal">
+An exception has occured during processes. 
+</window>
+</zk>

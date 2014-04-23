@@ -1,0 +1,700 @@
+<?page title="Diverse-BLAST for Proteins" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window
+		title="Diverse BLAST: search protein databases using a protein
+				query by considering diverse sections"
+		id="win" border="normal">
+
+		<script type="text/javascript">
+
+			
+			<![CDATA[ window.Boot_progressbox = function (){} ]]>
+			
+		
+		</script>
+		<html>
+			<div id="header">
+				<div id="site-name">
+
+					<img src="./image_file/helix.gif" />
+
+					Div-BLAST
+
+				</div>
+			</div>
+
+			<div align="center">
+				<span class="pgt"
+					style="text-align:center;font-weight:bold">
+					Diversification on Standard Protein BLAST
+				</span>
+			</div>
+
+			<link rel="stylesheet" type="text/css" href="./css/main.css"
+				media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/common.css" media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/blastn.css" media="screen" />
+			<link rel="stylesheet" id="sugstyle"
+				href="./css/ncbisuggest.css" type="text/css" />
+			<link rel="stylesheet" type="text/css"
+				href="./css/jig.core.theme.min.css" />
+			<link type="text/css" rel="stylesheet"
+				href="./css/jquery.ui.ncbitoggler.min.css" />
+			<link type="text/css" rel="stylesheet"
+				href="./css/jquery.ui.ncbiautocomplete.min.css" />
+
+		</html>
+		<div>
+			<style id="main" src="./css/main.css"></style>
+			<style id="common" src="./css/common.css"></style>
+			<style id="blastn" src="./css/blastn.css"></style>
+
+
+			<style id="forgrid">
+				tr.z-listitem,tr.z-row td.z-row-inner,tr.z-row
+				td.z-group-inner,tr.z-row td.z-group-foot-inner,tr.z-row
+				{ background: #EEEEEE none repeat scroll 0 0; }
+
+
+
+				/* Unselected rows with the mouse hovering over them */
+				tr.overd,td.overd,tr.z-listitem-over { background:
+				#D3DBFC none repeat scroll 0 0; }
+
+				/* Selected rows in a listbox */
+				tr.seld,td.seld,tr.z-listitem-seld { background: #B8BFDC
+				none repeat scroll 0 0; }
+
+				/* Selected rows with the mouse hovering over them */
+				tr.overseld,td.overseld,tr.z-listitem-over-seld {
+				background: #D3DBFC none repeat scroll 0 0; } tr.z-row
+				td.z-row-inner, tr.z-row .z-cell,div.z-grid { border:
+				none; overflow: hidden; zoom: 1; background: #eeeeee;
+				border-top: none; border-left: none; border-right: none;
+				border-bottom: none; }
+			</style>
+
+			<style id="grstyle">
+
+				.z-groupbox .z-caption { cursor: pointer;} .z-groupbox,<!-- bakk -->
+				.z-caption-readonly { cursor: default; }
+				.z-groupbox{background: #d3dff5}
+
+
+
+			</style>
+
+			<html>
+				<div id="progDescr" align="center"
+					style="background:#d3dff5">
+
+
+					Div-BLAST program queries proteins on BLAST
+					databases, and diversifies the results.
+
+				</div><!-- head -->
+			</html>
+			<div>
+
+
+
+				<groupbox style="grstyle">
+					<caption>
+						<label
+							style="color:#336699;background-color:#dddddd;font-size:15px">
+							Enter Query Sequence
+						</label>
+					</caption>
+					<grid focus="false" id="seqgrid" style="forgrid">
+						<columns>
+							<column></column>
+							<column></column>
+						</columns>
+						<rows>
+							<row>
+
+								<hbox>
+									<label style="font-weight:bold">
+										Enter FASTA sequence
+									</label>
+
+									<image src="image_file/question.png"
+										popup="seqInfo" style="cursor: help">
+									</image>
+									<space orient="horizontal"
+										width="300px">
+									</space>
+									<a label="Clear">
+										<attribute name="onClick">seq.setValue("");</attribute>
+									</a>
+								</hbox>
+								<hbox>
+									<space orient="horizontal"
+										width="20px">
+									</space>
+									<label style="font-weight:bold">
+										Query Subrange
+									</label>
+									<image src="image_file/question.png"
+										popup="rangeInfo" style="cursor: help">
+									</image>
+								</hbox>
+							</row>
+							<row>
+								<textbox rows="5" cols="80" id="seq"
+									multiline="true">
+								</textbox>
+								<hbox>
+									<vbox align="end">
+										<label>From</label>
+										<label>To</label>
+									</vbox>
+									<vbox>
+										<intbox id="query_from"
+											constraint="no negative,no zero">
+										</intbox>
+										<intbox id="query_to"
+											constraint="no negative,no zero">
+										</intbox>
+									</vbox>
+								</hbox>
+							</row>
+							<row>
+								<hbox>
+									<label style="font-weight:bold">
+										Or upload file
+									</label>
+									<image src="image_file/question.png"
+										popup="uploadInfo" style="cursor: help">
+									</image>
+								</hbox>
+
+								<label></label>
+							</row>
+
+							<row>
+								<hbox align="center">
+
+
+									<button id="upButton"
+										label="Upload file" upload="true"><attribute name="onUpload"><![CDATA[
+											media = event.getMedia();
+											upload.setValue(media.getName());//media type control
+										
+										]]></attribute>
+
+									</button>
+									<space orient="horizontal"
+										width="10px">
+									</space>
+									<label id="upload" value=""></label>
+								</hbox>
+								<label></label>
+							</row>
+							<row>
+								<hbox>
+									<label style="font-weight:bold">
+										Or find old queries by Request
+										ID
+									</label>
+									<image src="image_file/question.png"
+										popup="requestInfo" style="cursor: help">
+									</image>
+								</hbox>
+								<label></label>
+
+							</row>
+							<row>
+								<hbox align="center">
+									<textbox width="150px"
+										maxlength="10" id="requestTxt"
+										tooltiptext="It must have 10 alphanumeric characters">
+									</textbox>
+									<image src="image_file/go.png"
+										onClick="requestID()" width="30px"
+										tooltiptext="Quick find for request ID. Without using this button, search with request ID cannot be done."
+										style="cursor: pointer">
+									</image>
+								</hbox>
+								<label></label>
+							</row>
+						</rows>
+
+					</grid>
+				</groupbox>
+
+
+
+			</div><!-- seq border end -->
+
+			<div>
+				<groupbox style="grstyle">
+					<caption>
+						<label
+							style="color:#336699;background-color:#dddddd;border:#dddddd;font-size:15px
+							">
+							Choose Search Set and Programs
+						</label>
+					</caption>
+
+					<grid>
+						<rows>
+
+							<row valign="top">
+
+								<label style="font-weight:bold">
+									Database:
+								</label>
+								<hbox>
+									<listbox id="db" mold="select">
+										<listitem
+											id="uniprotkb_swissprot" label="UniproKB/SwissProt" />
+
+										<listitem id="uniprotkb"
+											label="UniprotKB" />
+
+										<listitem id="uniref50"
+											label="UniRef50" />
+										<listitem id="uniref90"
+											label="UniRef90" />
+										<listitem id="uniref100"
+											label="UniRef100" />
+
+									</listbox>
+
+									<image src="image_file/question.png"
+										popup="dbInfo" style="cursor: help">
+									</image>
+								</hbox>
+
+								<zscript><![CDATA[
+									db.setSelectedIndex(0);
+								]]></zscript>
+							</row>
+
+							<row>
+								<label style="font-weight:bold">
+									Maximum Target Sequences:
+								</label>
+								<hbox>
+									<intbox id="target" value="50"
+										constraint="no empty;no negative;no zero">
+									</intbox>
+									<image src="image_file/question.png"
+										popup="targetInfo" style="cursor: help">
+									</image>
+								</hbox>
+							</row>
+							<row valign="top">
+								<label style="font-weight:bold">
+									BLAST Algorithm:
+								</label>
+								<hbox>
+									<radiogroup id="blast">
+										<hbox>
+											<radio id="psiblast"
+												checked="true" />
+											<label>PSI-BLAST</label>
+										</hbox>
+										<hbox>
+											<radio id="blastp" />
+											<label>BLASTP</label>
+										</hbox>
+
+									</radiogroup>
+									<image src="image_file/question.png"
+										popup="blastInfo" style="cursor: help">
+									</image>
+								</hbox>
+							</row>
+
+							<row valign="top">
+
+								<label style="font-weight:bold">
+									Diversity Algorithm:
+								</label>
+
+								<hbox>
+									<radiogroup id="div">
+
+										<hbox>
+											<radio id="bit"
+												checked="true" />
+											<label>
+												Bitwise Comparison
+											</label>
+										</hbox>
+										<hbox>
+											<radio id="ent" />
+											<label>Entropy Based</label>
+										</hbox>
+										<hbox>
+											<radio id="none" />
+											<label>None</label>
+										</hbox>
+									</radiogroup>
+									<image src="image_file/question.png"
+										popup="divInfo" style="cursor: help">
+									</image>
+								</hbox>
+							</row>
+							<row>
+								<label style="font-weight:bold">
+									Diversity Percentage versus
+									Similarity:
+								</label>
+								<hbox>
+									<slider id="slider" mold="scale"
+										curpos="100">
+
+
+									</slider>
+									<space orient="horizontal"
+										spacing="20px">
+									</space>
+									<image src="image_file/question.png"
+										popup="rateInfo" style="cursor: help">
+									</image>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+
+
+			</div><!-- setup -->
+			<div>
+				<grid>
+					<rows>
+						<row>
+							<hbox>
+
+							</hbox>
+							<hbox align="center">
+								<image src="image_file/button.gif"
+									width="120px" onClick="runNCBI()" tooltip="reqInfo"
+									style="cursor: pointer">
+
+								</image>
+
+								<space orient="horizontal"
+									width="30px">
+								</space>
+								
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</div><!-- blast -->
+
+		</div>
+		<div align="center" style="background:#d3dff5">
+			<a sclass="progDescr"
+				href="mailto:elif.eser@bilkent.edu.tr">
+				contact
+			</a>
+			<a sclass="progDescr" popup="about">about</a>
+
+			<a sclass="progDescr"
+				href="https://github.com/eeser/DivBLAST">
+				download
+			</a>
+
+		</div>
+		<zscript language="Java">
+		<![CDATA[
+		import java.io.*;
+		import java.util.ArrayList;
+		import java.lang.String;
+		import JavaFiles.*;
+		
+		org.zkoss.util.media.Media media;
+		
+		//slider.setc
+		boolean win = false;
+		RequiredMethods methods = new RequiredMethods();
+		session.setAttribute("exception", null);
+
+		//for sequence
+		public void writeFile(String out, String text) {
+	
+			DataOutputStream writer = new DataOutputStream(
+					new BufferedOutputStream(new FileOutputStream(out)));
+			writer.write(text.getBytes());
+			writer.flush();
+			writer.close();
+	
+		}
+		
+		public void writeFile(String out, byte[] text) {
+	
+			DataOutputStream writer = new DataOutputStream(
+					new BufferedOutputStream(new FileOutputStream(out)));
+			writer.write(text);
+			writer.flush();
+			writer.close();
+	
+		}
+		
+		public void writeFile2(String out, String text) {
+	
+			DataOutputStream writer = new DataOutputStream(
+					new BufferedOutputStream(new FileOutputStream(out)));
+			writer.writeUTF(text);
+			writer.flush();
+			writer.close();
+	
+		}
+		
+		public void runNCBI() {
+			String[] arg;
+			String info = "";
+			//needed an argument list for web services
+			ArrayList arglist = new ArrayList();
+			
+			if ((seq.getText().equals("") && (upload.getValue().equals("")))) {
+				Messagebox.show("Enter sequence or upload a sequence file",
+						"Error", Messagebox.OK, Messagebox.ERROR);
+				return;
+			}
+	
+			String p = blast.getSelectedItem().getId();
+	
+			info += p + "\n";//1. program
+			if (p.equals("blastp")) {
+				arglist.add("--program");
+				arglist.add(blast.getSelectedItem().getId());
+				arglist.add("--scores");
+				arglist.add("500");
+				arglist.add("--alignments");
+				arglist.add("500");
+	
+			}
+			info += slider.getCurpos() / 100.0 + "\n";//2. divrate
+			session.setAttribute("divrate", slider.getCurpos() / 100.0);
+			session.setAttribute("program", blast.getSelectedItem().getId());
+			arglist.add("--database");
+			info += db.getSelectedItem().getLabel() + "\n";//3. db
+			arglist.add(db.getSelectedItem().getId());
+			arglist.add("--stype");
+			arglist.add("protein");
+
+			String outfile = methods.randomString();
+	
+			if ((!query_to.getText().equals(""))
+					&& (!query_from.getText().equals(""))) {
+				arglist.add("--seqrange");
+				arglist.add(query_from.getValue() + "-" + query_to.getValue());
+				session.setAttribute("query_from", query_from.getValue());
+				session.setAttribute("query_to", query_to.getValue());
+				info += query_from.getValue() + "\n";
+				info += query_to.getValue() + "\n";
+	
+			} else
+				info += "-\n-\n";//4-5. range
+	
+			arglist.add("--email");
+			arglist.add("m." + outfile + "@gmail.com");
+			arglist.add("--outfile");
+			arglist.add(outfile);
+			session.setAttribute("out", outfile);
+			session.setAttribute("byrequest", false);
+			session.setAttribute("dbname", db.getSelectedItem().getLabel());
+			System.out.println(outfile + " out");
+			info += target.getValue() + "\n";//6. k
+			session.setAttribute("knumber", target.getValue());
+	
+			//write file to a given name
+			String file = outfile + ".txt";
+			if (!seq.getValue().equals("")) {
+				writeFile(file, seq.getValue());
+			} else {
+				if (upload.getValue()
+						.substring(upload.getValue().lastIndexOf('.') + 1)
+						.equalsIgnoreCase("txt"))
+					writeFile(file, media.getStringData());//TODO denenmedi
+				else {
+					writeFile(file, media.getByteData());
+				}
+			}
+	
+			arglist.add(file);
+			arg = new String[arglist.size()];
+			for (int i = 0; i < arg.length; i++) {
+				arg[i] = (String) arglist.get(i);
+			}
+	
+			System.out.println(arg.length + " newin");
+	
+			//SampleWorkingThread.arg = arg;
+			//if (win)
+			//	Executions.getCurrent().sendRedirect("wait.zul", "_blank");
+			//	else
+			//	Executions.getCurrent().sendRedirect("wait.zul", "_self");
+			//Window w=  Executions.createComponents("timeout.zul",null,null);
+			session.setAttribute("ncbi", arg);
+			session.setAttribute("divtype", div.getSelectedItem().getId());//7 divtype
+			info += div.getSelectedItem().getId();
+	
+			writeFile2(outfile + ".inf", info);
+			session.setAttribute("exception", null);
+			if (!win)
+				execution.sendRedirect("wait.zul", "_self");
+			else {
+				execution.sendRedirect("wait.zul", "blank");
+				
+			}
+	
+		}
+		public String readFile(InputStream in) {
+			String out = "", line;
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			line = br.readLine();
+			while (line != null) {
+				out += line;
+	
+				line = br.readLine();
+			}
+	
+			br.close();
+	
+			return out;
+		}
+		public void requestID() {
+			if (!methods.includes(requestTxt.getValue())) {
+				Messagebox.show("Request ID is not found. It may be outdated.",
+						"Error", Messagebox.OK, Messagebox.ERROR);
+			} else {
+				String[] arr = methods.parameters(requestTxt.getValue());
+				session.setAttribute("program", arr[0]);
+				session.setAttribute("divrate", Double.parseDouble(arr[1]));
+				session.setAttribute("dbname", arr[2]);
+				if (!arr[3].equals("-")) {
+					session.setAttribute("query_from", Integer.parseInt(arr[3]));
+					session.setAttribute("query_to", Integer.parseInt(arr[4]));
+				}
+				session.setAttribute("out", requestTxt.getValue().toUpperCase());
+				session.setAttribute("knumber", Integer.parseInt(arr[5]));
+				session.setAttribute("byrequest", true);
+				session.setAttribute("divtype", arr[6]);
+				execution.sendRedirect("wait.zul", "_self");
+			}
+	
+		}
+		]]></zscript>
+		<popup id="seqInfo" width="300px">
+			<html>
+
+				<![CDATA[ Enter query sequence(s) in the text area. You
+				may enter protein in fasta format. ]]>
+			
+			</html>
+		</popup>
+
+		<popup id="uploadInfo" width="300px">
+			<html>
+
+				<![CDATA[ Use the browse button to upload a file from
+				your local disk. The file may contain a single sequence?
+				]]>
+			
+			</html>
+		</popup>
+		<popup id="rangeInfo" width="300px">
+			<html>
+
+				<![CDATA[ Enter coordinates for a subrange of the query
+				sequence. The BLAST search will apply only to the
+				residues in the range. Sequence coordinates are from 1
+				to the sequence length.The range includes start and end
+				residues, as well. ]]>
+				
+			
+			</html>
+		</popup>
+		<popup id="dbInfo" width="300px">
+			<html>
+
+				<![CDATA[<li/>nr: All non-redundant GenBank CDS
+				translations + RefSeq Proteins + PDB + SwissProt + PIR +
+				PRF <li/>swissprot Last major release of the SWISS-PROT
+				protein sequence database (no updates). <li/> uniref50
+				<li/>uniref90 <li/>uniref100 ]]>
+				
+			</html>
+		</popup>
+		<popup id="blastInfo" width="300px">
+			<html>
+
+				<![CDATA[<li/>BLASTP simply compares a protein query to
+				a protein database. <li/>PSI-BLAST allows the user to
+				build a PSSM (position-specific scoring matrix) using
+				the results of the first BLASTP run.) ]]>
+				
+			</html>
+		</popup>
+		<popup id="rateInfo" width="300px">
+			<html>
+
+				<![CDATA[Div-BLAST optimizes similarity and diversity
+				with respect to the given rate. 100% gives maximum
+				diversity, 0 provides maximum similarity.]]>
+				
+			</html>
+		</popup>
+		<popup id="targetInfo" width="300px">
+			<html>
+
+				<![CDATA[ Maximum number of aligned sequences to display
+				(it may return less number of sequences). ]]>
+				
+			</html>
+		</popup>
+		<popup id="divInfo" width="300px">
+			<html>
+
+				<![CDATA[ <li/>None: If you choose the option, it
+				returns the exact results of BLAST <li>Bit Comparison:
+				It just considers the aligned and non-aligned parts
+				regardless of considering mutations in alignments. This
+				approach is based on pairwise comparison of sequences.
+				<li> Entropy based: It considers also mutations, it may
+				take longer time than the previous method.]]>
+				
+			</html>
+		</popup>
+		<popup id="requestInfo" width="300px">
+			<html>
+
+				<![CDATA[ Enter a 10 length alphanumeric string given as
+				Request ID in your past sessions. Server flushes the
+				queries waiting longer than 3 days. When the property
+				used, it will redirect the exact result page with the
+				given request ID.]]>
+				
+			</html>
+		</popup>
+		<popup id="reqInfo" width="300px">
+			<html>
+
+				<![CDATA[ Sequence is required for search. ]]>
+				
+			</html>
+		</popup>
+		<popup id="about" width="300px">
+			<html>
+
+				<![CDATA[ This web service is built by using BLAST web
+				services. It basically does post-processing on the
+				results retrieved from BLAST/PSI-BLAST. The algorithms
+				are written in Java and as web framework ZK is used. ZK
+				is an Ajax Web application framework and can be
+				integrated to Eclipse]]>
+				
+			</html>
+		</popup>
+
+	</window>
+</zk>

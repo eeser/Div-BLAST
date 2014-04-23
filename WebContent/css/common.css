@@ -1,0 +1,17 @@
+.section p {margin-bottom: 0.5em;}
+.section a {font-weight: bold;}
+a.more {float: right;padding-right: 0.25em;font-weight: normal;}
+input:focus,textarea:focus,select:focus {background-color: #ffc;}
+.help {color: #666;font-size: 90%;padding: 0;margin:0;}
+a.help {color: #369;}
+.clearleft {clear: left;padding: 0;margin: 0;}
+input.linkButton, input.linkButton:focus {border:0;padding: 0;margin: 0;margin-top: 0.25em;background: transparent;
+backgroundcolor: #369;font-size: 100%;margin-left: 2em;text-decoration: underline;border-bottom: solid 1px #369;_border-bottom: none;}
+.linkButton {cursor: pointer; /* This is recognized by Mozilla as hand */	cursor: hand; /* This is recognized by IE as hand */}	
+fieldset {zoom: 1;}
+a.hidden{display:none;}
+/* Mark please correct that - I could not find the better way */
+#toggleOptions.showing {background-image: url(images/down.gif);}
+span.hidden{display:none;}
+tr.hidden{display:none;}
+.orgHint {color:#aaa;}
